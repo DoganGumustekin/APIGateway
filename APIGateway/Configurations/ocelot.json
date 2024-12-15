@@ -1,0 +1,36 @@
+{
+  //UserServiceApi
+  "Routes": [
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "UserService",
+      "DownstreamPathTemplate": "/api/Auth/{everything}",
+      "DownstreamScheme": "http",
+
+      "UpstreamPathTemplate": "/Auth/{everything}",
+      "UpstreamHttpMethod": [ "Post" ],
+      "UpStreamScheme": "http"
+    },
+    //PostServiceApi
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "PostService",
+      "DownstreamPathTemplate": "/api/Post/{everything}",
+      "DownstreamScheme": "http",
+
+      "UpstreamPathTemplate": "/Post/{everything}",
+      "UpstreamHttpMethod": [ "Post", "Get", "Delete", "Put" ],
+      "UpStreamScheme": "http"
+    }
+  ],
+
+  //Consul Settings
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000",
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}
