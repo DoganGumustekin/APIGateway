@@ -1,8 +1,8 @@
 {
-  
+
   "Routes": [
+    //UserServiceApi
     {
-      //UserServiceApi
       "UseServiceDiscovery": true,
       "ServiceName": "UserService",
       "DownstreamPathTemplate": "/api/Auth/{everything}",
