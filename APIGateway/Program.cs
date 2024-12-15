@@ -9,17 +9,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-//Api Gateway Integration
+//Consul and ocelot settings
 builder.Configuration
     .SetBasePath(builder.Environment.ContentRootPath)
     .AddJsonFile("Configurations/ocelot.json")
     .AddEnvironmentVariables();
-
 builder.Services.AddOcelot(builder.Configuration).AddConsul();
+
+
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
